@@ -6,14 +6,15 @@
 }
 
 a {
-    color: #484848;
+    color: #f9f9f9;
 }
 
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: "Roboto", sans-serif;
-    color: #484848;
+    color: #ffffff;
+    background-color: #000;
 }
 
 #headerGap {
@@ -22,7 +23,7 @@ body {
 }
 
 p {
-    color: #728181;
+    color: #ffffff;
 }
 
 .container-fluid {
@@ -60,7 +61,7 @@ p {
     line-height: 14px;
     font-weight: 500;
     font-style: normal;
-    color: #444;
+    color: #ffffff;
     font-family: "Roboto", sans-serif;
     padding: 10px 25px;
     display: block;
@@ -73,7 +74,7 @@ p {
 
 .line {
     fill: none;
-    stroke: #000000;
+    stroke: #ffffff;
     stroke-width: 8px;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -124,11 +125,12 @@ p {
     top: 78px !important;
     margin-top: 0 !important;
     visibility: visible !important;
+    background: #000;
 }
 .carousel-indicators {
     flex-wrap: wrap;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 header .dropdown-menu {
     min-width: 230px;
@@ -144,11 +146,24 @@ header .dropdown-menu {
     font-weight: bold;
     background-color: var(--primary);
     padding: 10px 20px;
+    color: #000;
 }
 
 .btn-sm-primary:hover,
 .btn-sm-primary:active {
     background-color: #1fecb9;
+    color: #000;
+}
+.btn-primary {
+    background-color: var(--primary);
+    color: #000;
+    border: 1px solid var(--primary);
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+    background-color: #1fecb9;
+    border: 1px solid #1fecb9;
     color: #000;
 }
 
@@ -168,7 +183,7 @@ header .dropdown-menu {
 
 .btn-outline-secondary {
     border: 1px solid #ced4da;
-    color: #495057;
+    color: #939699;
 }
 
 .btn-check+.btn:hover,
@@ -265,8 +280,8 @@ header.navbar.header-sticky .header-actions .contact-info {
 }
 header.navbar.nav-transparent-light.offcanvas-show .line,
 header.navbar.nav-transparent-light.offcanvas-show .nav-link{
-    color: #000;
-    stroke: #000;
+    color: #ffffff;
+    stroke: #ffffff;
 }
 header.navbar.nav-transparent-light .nav-link,
 header.navbar.nav-transparent-light .sub-nav-items {
@@ -285,7 +300,7 @@ header.navbar:not(.sub-nav) .sub-nav-container {
 header.navbar.header-sticky {
     top: -100px;
     transition: all 0.8s;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgb(33 37 41 / 91%);
 }
 
 header.navbar.header-sticky.fixed-top {
@@ -296,7 +311,7 @@ header.navbar.header-sticky.fixed-top {
 
 header.navbar.nav-transparent-dark .nav-link,
 header.navbar.nav-transparent-dark .sub-nav-items {
-    color: #000;
+    color: #ffffff;
     transition: all 0.3s;
 }
 
@@ -310,16 +325,17 @@ header.navbar.nav-transparent-light .line {
 }
 
 header.navbar:not(.nav-transparent-light) .logo-img.logo-dark {
-    display: block;
-    transition: all 0.3s;
-}
-
-header.navbar:not(.nav-transparent-light) .logo-img.logo-light {
     display: none;
     transition: all 0.3s;
 }
 
+header.navbar:not(.nav-transparent-light) .logo-img.logo-light {
+    display: block;
+    transition: all 0.3s;
+}
+
 #carouselSlider.carousel {
+    min-height: 600px;
     height: 100vh;
 }
 
@@ -371,7 +387,9 @@ section.hero-slider {
 .carousel-item.active .carousel-bg {
     transform: translate3d(0, 0, 0) scale(1.2);
 }
-
+[data-bs-theme=dark] .carousel .carousel-indicators [data-bs-target], [data-bs-theme=dark].carousel .carousel-indicators [data-bs-target] {
+    background-color: #ffffff;
+}
 .carousel-control-next,
 .carousel-control-prev {
     top: calc(50% + 66px);
@@ -447,7 +465,6 @@ section.hero-slider {
 
 h2.title-2 {
     font-size: 48px;
-    color: #000;
     font-weight: bold;
 }
 
@@ -471,7 +488,6 @@ h2.title-2 {
 
 h3.title-3 {
     font-size: 30px;
-    color: #000;
     font-weight: bold;
 }
 
@@ -547,7 +563,7 @@ section.portfolio .container-fluid {
 }
 
 .tab-nav {
-    color: #435657;
+    color: #ffffff;
     max-width: 270px;
     position: sticky;
     top: calc(50% - 50px);
@@ -682,13 +698,13 @@ li.arrow-card img {
 }
 
 .form-control {
-    color: #495057;
+    color: #ffffff;
     padding: 10px 16px;
     border-radius: 4px;
 }
 
 .form-control::placeholder {
-    color: #728181;
+    color: #c2caca;
 }
 
 .page-grid {
@@ -723,7 +739,7 @@ li.arrow-card img {
 
 footer {
     padding: 30px 0;
-    background-color: #142c2d;
+    background-color: #0e0e0e;
     font-size: 14px;
     color: #a0a8a8;
 }
@@ -746,5 +762,73 @@ footer {
 }
 
 .footer-link-wrapper a {
-    color: #a0a8a8;
+    color: #cfcfcf;
+}
+
+
+.modal-dialog {
+    max-width: 578px;
+}
+.modal-logo img{
+    max-width: 70px;
+    transform: scale(1.5);
+}
+
+button.btn-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: unset;
+    height: unset;
+    box-shadow: unset !important;
+}
+
+p.modal-description span {
+    font-size: 12.25px;
+    line-height: 1.7;
+}
+p.modal-description span a{
+    color: #32c553;
+    text-decoration: none;
+}
+
+p.modal-description span:last-child {
+    font-size: 10.5px;
+    display: block;
+    line-height: 1.25;
+    border-top: 1px solid #353535;
+}
+.modal-check-list .form-check {
+    padding-left: 28px;
+}
+.modal-check-list .form-check-label {
+    padding: 0 4px;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 14px;
+}
+.modal-check-list .form-check-input {
+    box-shadow: unset !important;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    border-color: #ffffff;
+    border-width: 2px;
+}
+.form-check-input:checked {
+    background-color: #28a745;
+    border-color: #30c553;
+    box-shadow: unset !important;
+}
+
+.modal-check-list  .form-check-input:disabled {
+    pointer-events: none;
+    filter: none;
+    background-color: #4b4b4b;
+    border-color: #ffffff;
+    opacity: 1;
+}
+
+.form-check-input:disabled~.form-check-label, .form-check-input[disabled]~.form-check-label {
+    opacity: 1;
 }

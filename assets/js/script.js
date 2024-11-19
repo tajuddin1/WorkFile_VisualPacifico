@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const video = document.getElementById('heroVideo');
     const carousel = document.getElementById('carouselSlider');
@@ -31,6 +29,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// document.addEventListener("DOMContentLoaded", function () {
+//     const gallery = document.querySelector(".portfolio-grid");
+//     const items = document.querySelectorAll(".portfolio-card");
+//     const gap = 15;
+//     function arrangeItems() {
+//         const screenWidth = window.innerWidth;
+//         let columns;
+//         if (screenWidth > 1024) {
+//             columns = 3; 
+//         } else if (screenWidth > 481) {
+//             columns = 2;
+//         } else {
+//             columns = 1;
+//         }
+//         const columnHeights = Array(columns).fill(0);
+//         items.forEach((item, index) => {
+//             const columnIndex = index % columns;
+//             const x = columnIndex * (gallery.clientWidth / columns);
+//             const y = columnHeights[columnIndex];
+//             item.style.transform = `translate(${x}px, ${y}px)`;
+//             columnHeights[columnIndex] += item.offsetHeight + gap;
+//         });
+//         gallery.style.height = `${Math.max(...columnHeights)}px`;
+//     };
+//     arrangeItems();
+//     window.addEventListener("resize", arrangeItems);
+// });
 document.addEventListener("DOMContentLoaded", function () {
     const gallery = document.querySelector(".portfolio-grid");
     const items = document.querySelectorAll(".portfolio-card");
@@ -46,19 +71,47 @@ document.addEventListener("DOMContentLoaded", function () {
             columns = 1;
         }
         const columnHeights = Array(columns).fill(0);
+
         items.forEach((item, index) => {
             const columnIndex = index % columns;
             const x = columnIndex * (gallery.clientWidth / columns);
             const y = columnHeights[columnIndex];
+            
             item.style.transform = `translate(${x}px, ${y}px)`;
-            columnHeights[columnIndex] += item.offsetHeight + gap;
-        });
+                columnHeights[columnIndex] += item.offsetHeight + gap;
+            });
         gallery.style.height = `${Math.max(...columnHeights)}px`;
-    };
-    arrangeItems();
-    window.addEventListener("resize", arrangeItems);
+    }
+    function initLayout() {
+        const promises = [...items].map(
+        (item) =>
+            new Promise((resolve) => {
+            const img = item.querySelector("img");
+            if (img && !img.complete) {
+                img.onload = resolve;
+                img.onerror = resolve;
+            } else {
+                resolve();
+            }
+            })
+        );
+        Promise.all(promises).then(() => {
+            arrangeItems();
+        });
+    }
+    function debounce(func, delay) {
+        let timeout;
+        return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
+    initLayout();
+    const debouncedArrangeItems = debounce(initLayout, 200);
+    window.addEventListener("resize", debouncedArrangeItems);
 });
-
+          
+  
 
 document.addEventListener('DOMContentLoaded', function () {
     const tabs = document.querySelectorAll('.tabs-list .tabs-nav-item');
